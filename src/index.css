@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    font-family: "santander_regular", "Arial", sans-serif;
+  }
+
+  input[type=password]::-ms-reveal,
+  input[type=password]::-ms-clear
+  {
+      display: none;
+  }
+
+  *:focus {
+    outline: 0px !important;
+    outline-offset: 0px !important;
+    box-shadow: none !important;
+  }
+}
+
+@font-face{
+  font-family: "santander_bold";
+  src: url("./assets/fonts/SantanderText-Bold.d92c02b7.woff") format("woff");
+}
+
+@font-face{
+  font-family: "santander_regular";
+  src: url("./assets/fonts/SantanderText-Regular.bf509714.woff") format("woff");
+}
+
+@font-face{
+  font-family: "santander_light";
+  src: url("./assets/fonts/SantanderText-Light.6457c5d9.woff") format("woff");
+}
+
+@font-face{
+  font-family: "SantanderTextW05-Regular";
+  src: url("./assets/fonts/SantanderTextW05-Regular.746c91a0.woff") format("woff");
+}
+
+@font-face{
+  font-family: "SantanderTextW05-Bold";
+  src: url("./assets/fonts/SantanderTextW05-Bold.90073800.woff") format("woff");
+}
+
+@font-face{
+  font-family: "SantanderHeadlineW05-Rg";
+  src: url("./assets/fonts/SantanderHeadlineW05-Rg.a5ec6e62.woff") format("woff");
+}
+
+@font-face{
+  font-family: "SantanderHeadlineW05-Bold";
+  src: url("./assets/fonts/SantanderHeadlineW05-Bold.ed7772dd.woff") format("woff");
+}
+
+@font-face{
+  font-family: "SantanderMicroTextW05-Rg";
+  src: url("./assets/fonts/SantanderMicroTextW05-Rg.23bf5fda.woff") format("woff");
+}
+
+@font-face{
+  font-family: "SantanderMicroTextW05-Light";
+  src: url("./assets/fonts/SantanderMicroTextW05-Light.d11a2cfb.woff") format("woff");
+}
+
+@font-face{
+  font-family: "SantanderMicroTextW05-Bold";
+  src: url("./assets/fonts/SantanderMicroTextW05-Bold.025b01e5.woff") format("woff");
+}
+
+@font-face{
+  font-family: "SantanderMicroTextW05-It";
+  src: url("./assets/fonts/SantanderMicroTextW05-It.d45b2c82.woff") format("woff");
+}
