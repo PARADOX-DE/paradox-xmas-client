@@ -1,6 +1,6 @@
 {
-  "short_name": "Santander",
-  "name": "Starter template for Vite with React (TypeScript). Supports Tailwind with CSS-Modules. Jest and @react/testing-library configured and ready to go. Also ESLint, Prettier, Husky, Commit-lint and Atomic Design for components.",
+  "short_name": "PARADOX Adventskalender",
+  "name": "Der PARADOX Adventskalender, der Ort an dem deine Wünsche war werden - den ganzen Monat lang.",
   "icons": [
     {
       "src": "favicon.svg",
