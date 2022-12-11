@@ -28,15 +28,16 @@ const Button: React.FC<IButtonProps> = ({
       onClick={onClick}
       sx={
         {
-          backgroundColor: "rgb(158, 54, 103)",
+          backgroundColor: "rgb(68, 68, 68, 0.8)",
           boxShadow: "0px 3px 4px rgba(0, 0, 0, 0.12)",
-          border: "1px solid transparent",
+          border: "1px solid rgb(118, 118, 118, 0.5)",
           color: "white",
           textTransform: "none",
           fontSize: "16px",
-          fontFamily: "SantanderMicroTextW05-Bold",
+          fontFamily: "SF Pro Display",
+          fontWeight: 400,
           ":hover": {
-            backgroundColor: "rgba(115, 38, 69)",
+            backgroundColor: "rgb(68, 68, 68)",
             boxShadow: "rgb(0 0 0 / 20%) 0px 2px 4px -1px, rgb(0 0 0 / 14%) 0px 4px 5px 0px, rgb(0 0 0 / 12%) 0px 1px 10px 0px"
           },
           ":active": {

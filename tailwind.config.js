@@ -6,14 +6,18 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      'headline': ['SantanderHeadlineW05-Bold', 'Arial', 'sans-serif'],
-      'micro': ['SantanderMicroTextW05-Rg', 'Arial', 'sans-serif'],
-      'micro-bold': ['SantanderMicroTextW05-Bold', 'Arial', 'sans-serif']
+      'default': ['SF Pro Display', 'sans-serif']
+    },
+    fontWeight: {
+      'normal': 400,
+      'medium': 500,
+      'semibold': 700 
     },
     colors: {
-      'primary': '#9e3667',
+      'primary': '#be4242',
       'primary-light': '#b9638b',
       'secondary': '#137e84',
+      'white': "#fff",
 
       'gray': {
         900: '#444',

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Button from "components/button";
 import Input from "components/input";
 
-import TitleWithIllustration from "layouts/title-with-illustration";
+import Logo from "assets/vectors/paradox-logo.svg";
 
 const Login: React.FC = () => 
 {
@@ -15,34 +15,30 @@ const Login: React.FC = () =>
   }
 
   return (
-    <TitleWithIllustration>
-      <Input 
-        className="!mt-6"
-        fullWidth={true}
-        label="Benutzerkennung"
-        variant="standard"
-        onChange={userAlias => setUserAlias(userAlias.target.value)} />
+    <div className="flex justify-center items-center h-full backdrop-blur-sm">
+      <div className="flex bg-primary bg-opacity-30 h-full 2xl:w-3/12 xl:w-1/3 w-full justify-center items-center">
+        <div className="flex flex-col items-center justify-center w-full p-16 gap-3">
+          <div className="text-center">
+            <img src={Logo} alt="Logo" className="w-36"/>
+          </div>
 
-      <Input 
-        className="!mt-8"
-        fullWidth={true}
-        label="Passwort"
-        variant="standard"
-        onChange={password => setPassword(password.target.value)} />
+          <div className="text-center">
+            <p className="font-medium text-3xl">Adventskalender</p>
+          </div>
 
-      <a 
-        className="
-        block cursor-pointer text-sm font-micro-bold text-primary mt-4 mb-6 whitespace-nowrap hover:ease-in-out 
-        hover:transition hover:text-primary-light
-      ">Passwort zurücksetzen</a>
-      
-      <Button
-        size="large"
-        fullWidth={true}
-        onClick={handleLoginSubmit}>
-          Einloggen
-      </Button>
-    </TitleWithIllustration>
+          <div className="bg-gray-800 bg-opacity-50 w-full h-[1px]" />
+
+          <div className="flex justify-center items-center bg-gray-900 bg-opacity-50 border-solid border-gray-800 border-opacity-30 border-[1px] w-full h-12 rounded">
+            <p className="font-default text-base">Bitte mit den IC-Logindaten einloggen.</p>
+          </div>
+
+          <Input label="Nutzername:" fullWidth={true} />
+          <Input label="Passwort:" fullWidth={true} />
+
+          <Button fullWidth={true}>Einloggen</Button>
+        </div>
+      </div>
+    </div>
   );
 };
 
