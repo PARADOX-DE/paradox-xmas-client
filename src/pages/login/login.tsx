@@ -113,6 +113,7 @@ const Login: React.FC = () =>
               <Input 
                 label="Passwort:" 
                 fullWidth={true}
+                type="password"
                 onChange={password => setPassword(password.target.value)} />
             </>
           ): (

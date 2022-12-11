@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import authService from "./auth.service";
 
-const API_URL = "http://localhost:3005/v1/";
+const API_URL = "http://xmas.prdx.to:3005/v1/";
 
 class PresentService {
   openPresent = async(): Promise<any> => {

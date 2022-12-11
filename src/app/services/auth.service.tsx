@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 
-const API_URL = "http://localhost:3005/v1/";
+const API_URL = "https://xmas.prdx.to:3005/v1/";
 
 class AuthService {
   login = async (username: string, password: string): Promise<any> => {
