@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Button from "components/button";
 import Input from "components/input";
@@ -6,22 +6,79 @@ import Input from "components/input";
 import { useAuthContext } from "app/contexts/auth-context";
 
 import Logo from "assets/vectors/paradox-logo.svg";
+import authService from "app/services/auth.service";
+import { useNavigate } from "react-router-dom";
+
+export enum LoginModes {
+  CREDENTIALS,
+  CODE
+}
 
 const Login: React.FC = () => 
 {
   const { setAuthUser } = useAuthContext();
+  const navigate = useNavigate();
+  
+  const [christmasCode, setChristmasCode] = useState<string>();
 
   const [userAlias, setUserAlias] = useState<string>();
   const [password, setPassword] = useState<string>();
+  const [error, setError] = useState<string>();
+
+  const [loginMode, setLoginMode] = useState<LoginModes>(LoginModes.CREDENTIALS);
 
   const handleLoginSubmit = (): void => {
-    setAuthUser({
-      id: 1,
-      username: "Makan_Rajabi",
-      hasGiftClaimed: false,
-      giftClaimed: ""
+    if(loginMode == LoginModes.CODE) {
+      authService.loginWithCode(christmasCode).then(response => {
+        if(response.success) {
+          var account = response.content;
+  
+          setAuthUser({
+            id: account.id,
+            username: account.name,
+            giftClaimed: account.giftClaimed,
+            hasGiftClaimed: account.hasGiftClaimed
+          })
+  
+          localStorage.setItem("accessToken", response.accessToken);
+        } else setError(response.content);
+      });
+
+      return;
+    }
+
+    authService.login(userAlias, password).then(response => {
+      if(response.success) {
+        var account = response.content;
+
+        setAuthUser({
+          id: account.id,
+          username: account.name,
+          giftClaimed: account.giftClaimed,
+          hasGiftClaimed: account.hasGiftClaimed
+        })
+
+        localStorage.setItem("accessToken", response.accessToken);
+      } else setError(response.content);
     });
   }
+
+  useEffect(() => {
+    authService.checkLoggedIn().then(response => {
+      if(response.success) {
+        var account = response.content;
+
+        setAuthUser({
+          id: account.id,
+          username: account.name,
+          giftClaimed: account.giftClaimed,
+          hasGiftClaimed: account.hasGiftClaimed,
+        })
+
+        localStorage.setItem("accessToken", response.accessToken);
+      }
+    })
+  });
 
   return (
     <div className="flex justify-center items-center h-full backdrop-blur-sm">
@@ -41,10 +98,35 @@ const Login: React.FC = () =>
             <p className="font-default text-base">Bitte mit den IC-Logindaten einloggen.</p>
           </div>
 
-          <Input label="Nutzername:" fullWidth={true} />
-          <Input label="Passwort:" fullWidth={true} />
+          <div className="flex flex-row gap-2">
+            <Button onClick={() => setLoginMode(LoginModes.CREDENTIALS)}>Mit Nuzterdaten</Button>
+            <Button onClick={() => setLoginMode(LoginModes.CODE)}>Mit Code</Button>
+          </div>
 
+          { loginMode == LoginModes.CREDENTIALS ? (
+            <>
+              <Input 
+                label="Nutzername:" 
+                fullWidth={true}
+                onChange={userAlias => setUserAlias(userAlias.target.value)} />
+              
+              <Input 
+                label="Passwort:" 
+                fullWidth={true}
+                onChange={password => setPassword(password.target.value)} />
+            </>
+          ): (
+            <>
+            <Input 
+                label="Login-Code:" 
+                fullWidth={true}
+                onChange={loginCode => setChristmasCode(loginCode.target.value)} />
+            </>
+          ) }
+          <p>{error}</p>
           <Button fullWidth={true} onClick={handleLoginSubmit}>Einloggen</Button>
+
+          <p className="opacity-80 underline" onClick={() => navigate("/create-code", { replace: true })}>Ich habe keinen Account, bzw. Daten vergessen:</p>
         </div>
       </div>
     </div>

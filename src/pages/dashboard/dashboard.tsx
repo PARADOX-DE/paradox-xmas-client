@@ -5,10 +5,27 @@ import Input from "components/input";
 
 import Logo from "assets/vectors/paradox-logo.svg";
 import { useAuthContext } from "app/contexts/auth-context";
+import presentService from "app/services/present.service";
 
 const Dashboard: React.FC = () => 
 {
-  const { currentAuthUser } = useAuthContext();
+  const { setAuthUser, currentAuthUser } = useAuthContext();
+
+  const [callbackMessage, setCallbackMessage] = useState<string>();
+
+  const openPresent = (): void => {
+     presentService.openPresent().then(response => {
+      if(response.success) {
+        var present = response.content;
+
+        currentAuthUser.hasGiftClaimed = true;
+        currentAuthUser.giftClaimed = present.item;
+
+        setAuthUser(currentAuthUser);
+        setCallbackMessage("");
+      } else setCallbackMessage(response.content);
+    });
+  }
 
   return (
     <div className="flex justify-center items-center h-full backdrop-blur-sm">
@@ -28,7 +45,7 @@ const Dashboard: React.FC = () =>
             <p className="font-default text-base">Willkommen, { currentAuthUser?.username }.</p>
             <p className="font-default text-sm">
               {
-                currentAuthUser?.hasGiftClaimed ? 
+                currentAuthUser.hasGiftClaimed ? 
                   "Du hast bereits dein Geschenk abgeholt." :
                   "Bist du bereit dein tägliches Geschenk abzuholen?"
               }
@@ -38,18 +55,19 @@ const Dashboard: React.FC = () =>
           <div className="flex justify-center items-center">
             <img src="/images/gift-icon.png" className="w-1/3" alt="Geschenk" />
             <div className="flex flex-col">
-              <p className="font-semibold uppercase tracking-widest">TAG 11</p>
+              <p className="font-semibold uppercase tracking-widest">TAG { new Date().getDate() }</p>
               <p className="font-medium spacing tracking-tight uppercase -my-2">
                 {
-                  currentAuthUser?.hasGiftClaimed ? 
+                  currentAuthUser.hasGiftClaimed ? 
                     currentAuthUser.giftClaimed :
                     "Unbekannter Inhalt"
                 }
               </p>
             </div>
           </div>
+          { callbackMessage }
 
-          { !currentAuthUser?.hasGiftClaimed && <Button className="!mt-3" fullWidth={true}>Geschenk öffnen</Button>}
+          { !currentAuthUser?.hasGiftClaimed && <Button className="!mt-3" fullWidth={true} onClick={() => openPresent()}>Geschenk öffnen</Button>}
         </div>
       </div>
     </div>
