@@ -7,7 +7,7 @@ const PrivateRoutes: React.FC = () => {
     <Routes>
       <Route path="/" element={<Navigate replace to="/dashboard" />} />
       <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="*" element={<Dashboard />} />
+      <Route path="*" element={<Navigate replace to="/dashboard" />} />
     </Routes>
   );
 };

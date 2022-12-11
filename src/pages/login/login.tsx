@@ -3,15 +3,24 @@ import React, { useState } from "react";
 import Button from "components/button";
 import Input from "components/input";
 
+import { useAuthContext } from "app/contexts/auth-context";
+
 import Logo from "assets/vectors/paradox-logo.svg";
 
 const Login: React.FC = () => 
 {
+  const { setAuthUser } = useAuthContext();
+
   const [userAlias, setUserAlias] = useState<string>();
   const [password, setPassword] = useState<string>();
 
   const handleLoginSubmit = (): void => {
-    
+    setAuthUser({
+      id: 1,
+      username: "Makan_Rajabi",
+      hasGiftClaimed: false,
+      giftClaimed: ""
+    });
   }
 
   return (
@@ -35,7 +44,7 @@ const Login: React.FC = () =>
           <Input label="Nutzername:" fullWidth={true} />
           <Input label="Passwort:" fullWidth={true} />
 
-          <Button fullWidth={true}>Einloggen</Button>
+          <Button fullWidth={true} onClick={handleLoginSubmit}>Einloggen</Button>
         </div>
       </div>
     </div>
