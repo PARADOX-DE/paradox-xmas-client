@@ -99,7 +99,7 @@ const Login: React.FC = () =>
           </div>
 
           <div className="flex flex-row gap-2">
-            <Button onClick={() => setLoginMode(LoginModes.CREDENTIALS)}>Mit Nuzterdaten</Button>
+            <Button onClick={() => setLoginMode(LoginModes.CREDENTIALS)}>Mit Nutzerdaten</Button>
             <Button onClick={() => setLoginMode(LoginModes.CODE)}>Mit Code</Button>
           </div>
 
