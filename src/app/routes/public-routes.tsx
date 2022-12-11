@@ -1,0 +1,15 @@
+import Login from "pages/login";
+import React from "react";
+import { Navigate, Route, Routes } from 'react-router-dom';
+
+const PublicRoutes: React.FC = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<Navigate replace to="/login" />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="*" element={<Login />} />
+    </Routes>
+  );
+};
+
+export default PublicRoutes;
