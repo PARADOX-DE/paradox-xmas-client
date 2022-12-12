@@ -66,7 +66,11 @@ const Dashboard: React.FC = () =>
             </div>
           </div>
           { callbackMessage }
-
+          <p>
+              { 
+                currentAuthUser.christmasCode != "" && ("Dein Code: " + currentAuthUser.christmasCode)
+              }
+            </p>
           { !currentAuthUser?.hasGiftClaimed && <Button className="!mt-3" fullWidth={true} onClick={() => openPresent()}>Geschenk öffnen</Button>}
         </div>
       </div>

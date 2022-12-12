@@ -3,4 +3,5 @@ export interface AuthUserModel {
 	username: string;
   hasGiftClaimed: boolean;
   giftClaimed: string;
+  christmasCode: string;
 }

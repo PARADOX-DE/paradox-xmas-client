@@ -37,7 +37,8 @@ const Login: React.FC = () =>
             id: account.id,
             username: account.name,
             giftClaimed: account.giftClaimed,
-            hasGiftClaimed: account.hasGiftClaimed
+            hasGiftClaimed: account.hasGiftClaimed,
+            christmasCode: account.christmasCode
           })
   
           localStorage.setItem("accessToken", response.accessToken);
@@ -55,7 +56,8 @@ const Login: React.FC = () =>
           id: account.id,
           username: account.name,
           giftClaimed: account.giftClaimed,
-          hasGiftClaimed: account.hasGiftClaimed
+          hasGiftClaimed: account.hasGiftClaimed,
+          christmasCode: account.christmasCode
         })
 
         localStorage.setItem("accessToken", response.accessToken);
@@ -73,6 +75,7 @@ const Login: React.FC = () =>
           username: account.name,
           giftClaimed: account.giftClaimed,
           hasGiftClaimed: account.hasGiftClaimed,
+          christmasCode: account.christmasCode
         })
 
         localStorage.setItem("accessToken", response.accessToken);
