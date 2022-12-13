@@ -66,7 +66,7 @@ const Login: React.FC = () =>
   }
 
   useEffect(() => {
-    authService.checkLoggedIn().then(response => {
+    /*authService.checkLoggedIn().then(response => {
       if(response.success) {
         var account = response.content;
 
@@ -80,7 +80,7 @@ const Login: React.FC = () =>
 
         localStorage.setItem("accessToken", response.accessToken);
       }
-    })
+    })*/
   });
 
   return (
@@ -131,6 +131,7 @@ const Login: React.FC = () =>
           <Button fullWidth={true} onClick={handleLoginSubmit}>Einloggen</Button>
 
           <p className="opacity-80 underline" onClick={() => navigate("/create-code", { replace: true })}>Ich habe keinen Account, bzw. Daten vergessen:</p>
+          
         </div>
       </div>
     </div>
